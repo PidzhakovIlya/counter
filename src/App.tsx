@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import { Counter } from './components/counter/Counter';
+import {SettingsCounter} from "./components/settingsCounter/SettingsCounter";
+import {FlexWrapper} from "./components/FlexWrapper";
 
+
+export let minCount = 0;
+export let maxCount = 5;
 function App() {
+    const [ min, setMin] = useState(minCount);
+    const [ max, setMax] = useState(maxCount);
+    const [count, setCount] = useState(minCount)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FlexWrapper direction={"row"} justify={"center"} align={"center"} gap={"20px"}>
+        <Counter min={min} max={max} count={count} setCount={setCount}/>
+        <SettingsCounter setMin={setMin} setMax={setMax} min={min} max={max} />
+    </FlexWrapper>
   );
 }
 
