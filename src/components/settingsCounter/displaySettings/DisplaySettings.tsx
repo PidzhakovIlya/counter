@@ -2,25 +2,26 @@ import React from 'react';
 import styled from "styled-components";
 import {Input} from "../../input/Input";
 import {baseTheme} from "../../theme";
+import {SettingsCounterPropsType} from "../SettingsCounter";
 
 
-type DisplayPropsType = {
-    min?: number
-    max?: number
-    setMin: (value: number) => void
-    setMax: (value: number) => void
-}
+// type DisplayPropsType = {
+//     min: number
+//     max: number
+//     setMin: (value:number) => void
+//     setMax: (value:number) => void
+// }
 
 
-export const DisplaySettings: React.FC<DisplayPropsType> = ({min, max, setMin, setMax}) => {
+export const DisplaySettings: React.FC<SettingsCounterPropsType> = ({min, max, setMin, setMax}) => {
     return (
         <DisplayBox>
             <div>min
-                <Input title={min} setTitle={()=>setMin(min)}/>
+                <Input title={min} setTitle={setMin}/>
             </div>
             <div>
                 max
-                <Input title={max} setTitle={()=>setMax(max)}/>
+                <Input title={max} setTitle={setMax}/>
             </div>
         </DisplayBox>
     );

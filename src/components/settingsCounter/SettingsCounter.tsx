@@ -5,7 +5,7 @@ import {baseTheme} from "../theme";
 import {FlexWrapper} from "../FlexWrapper";
 import { DisplaySettings } from './displaySettings/DisplaySettings';
 
-type SettingsCounterPropsType = {
+export type SettingsCounterPropsType = {
 
     setMin: (value:number)=>void
     setMax: (value:number)=>void
@@ -22,7 +22,7 @@ export const SettingsCounter:React.FC<SettingsCounterPropsType> = ({setMin, setM
     }
     return (
         <CounterBox>
-            <DisplaySettings setMin={setMin} setMax={setMax} />
+            <DisplaySettings setMin={setMin} setMax={setMax} min={min} max={max} />
             <FlexWrapper justify={"space-evenly"} >
                 <Button name={"SetStart"} callBack={setMinHandler} disabled={false}/>
                 <Button name={"SetEnd"} callBack={setMaxHandler} disabled={false}/>
