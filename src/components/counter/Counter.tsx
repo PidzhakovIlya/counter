@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import styled from "styled-components";
-import {Button} from '../button/Button';
-import {Display} from '../display/Display';
+import {Button} from "../button/Button";
+import {Display} from "../display/Display";
 import {baseTheme} from "../theme";
 import {FlexWrapper} from "../FlexWrapper";
 
@@ -10,11 +10,11 @@ type CounterTypeProps = {
     min: number
     max: number
     count: number
-    setCount:(value: number)=>void
+    setCount: (value: number) => void
 }
 
 
-export const Counter:React.FC<CounterTypeProps> = ({min, max, count, setCount}) => {
+export const Counter: React.FC<CounterTypeProps> = ({min, max, count, setCount}) => {
 
 
     const counterHandler = () => {
@@ -25,10 +25,13 @@ export const Counter:React.FC<CounterTypeProps> = ({min, max, count, setCount}) 
     }
     return (
         <CounterBox>
-            <Display counter={count} maxCount={max}/>
+            {max > min ?
+                <Display counter={count} maxCount={max}/>
+                : <Display counter={"Incorrect Value"} maxCount={max}/>
+            }
             <FlexWrapper justify={"space-evenly"}>
-                <Button name={"SET"} callBack={counterHandler} disabled={count === max}/>
-                <Button name={"RESET"} callBack={resetCounter} disabled={count === min}/>
+                <Button name={"SET"} callBack={counterHandler} disabled={count === max || count < min || count >= max}/>
+                <Button name={"RESET"} callBack={resetCounter} disabled={count === min || count < min || count > max}/>
             </FlexWrapper>
         </CounterBox>
     );

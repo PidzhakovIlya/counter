@@ -15,7 +15,7 @@ function App() {
   return (
     <FlexWrapper direction={"row"} justify={"center"} align={"center"} gap={"20px"}>
         <Counter min={min} max={max} count={count} setCount={setCount}/>
-        <SettingsCounter setMin={setMin} setMax={setMax} min={min} max={max} />
+        <SettingsCounter setMin={setMin} setMax={setMax} min={min} max={max} setCount={setCount} />
     </FlexWrapper>
   );
 }

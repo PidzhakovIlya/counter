@@ -17,11 +17,11 @@ export const DisplaySettings: React.FC<SettingsCounterPropsType> = ({min, max, s
     return (
         <DisplayBox>
             <div>min
-                <Input title={min} setTitle={setMin}/>
+                <Input title={min} setTitle={setMin} min={min} max={max} />
             </div>
             <div>
                 max
-                <Input title={max} setTitle={setMax}/>
+                <Input title={max} setTitle={setMax} min={min} max={max} />
             </div>
         </DisplayBox>
     );
@@ -34,4 +34,6 @@ const DisplayBox = styled.div`
   height: 75px;
   border: 1px solid ${baseTheme.primary};
   border-radius: 10px;
+  color: wheat;
+  padding: 10px;
 `

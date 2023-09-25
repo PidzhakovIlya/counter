@@ -1,18 +1,18 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 import {baseTheme} from "../theme";
 
 
 type DisplayPropsType = {
-    counter?: number
+    counter: number | string
     maxCount?: number
 }
 type StyledDisplayPropsType = {
-    counter?: number
+    counter?: number | string
     maxCount?: number
 }
 
-export const Display:React.FC<DisplayPropsType> = ({counter, maxCount}) => {
+export const Display: React.FC<DisplayPropsType> = ({counter, maxCount}) => {
     return (
         <DisplayBox counter={counter} maxCount={maxCount}>
             <span>{counter}</span>
@@ -22,6 +22,9 @@ export const Display:React.FC<DisplayPropsType> = ({counter, maxCount}) => {
 
 
 const DisplayBox = styled.div<StyledDisplayPropsType>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 10px auto;
   width: 150px;
   height: 75px;
@@ -30,11 +33,11 @@ const DisplayBox = styled.div<StyledDisplayPropsType>`
 
 
   & span {
-    display: inline-block;
-    text-align: center;
-    font-size: 30px;
-    color: ${props => props.counter === props.maxCount ? baseTheme.danger : baseTheme.font};
- 
+    font-size: 28px;
+    color: ${props => props.counter === props.maxCount
+    ||  props.counter === "Incorrect Value" ?
+            baseTheme.danger
+            : baseTheme.font};
   }
 
 `
