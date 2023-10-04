@@ -19,11 +19,13 @@ export type SetCounterPropsType = SettingsCounterPropsType &  {
 export const SettingsCounter: React.FC<SetCounterPropsType> = ({setMin, setMax, min, max, setCount}) => {
 
         const setCountHandler = ()=> {
+
             setCount(min)
         }
         const restartSettingsHandler = ()=>{
             setMin(0);
             setMax(5)
+            setCount(min)
         }
     return (
         <CounterBox>

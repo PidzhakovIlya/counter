@@ -25,12 +25,12 @@ export const Counter: React.FC<CounterTypeProps> = ({min, max, count, setCount})
     }
     return (
         <CounterBox>
-            {max > min ?
+            {max > min && min >= 0 ?
                 <Display counter={count} maxCount={max}/>
                 : <Display counter={"Incorrect Value"} maxCount={max}/>
             }
             <FlexWrapper justify={"space-evenly"}>
-                <Button name={"SET"} callBack={counterHandler} disabled={count === max || count < min || count >= max}/>
+                <Button name={"SET"} callBack={counterHandler} disabled={ count >= max || count < min}/>
                 <Button name={"RESET"} callBack={resetCounter} disabled={count === min || count < min || count > max}/>
             </FlexWrapper>
         </CounterBox>
