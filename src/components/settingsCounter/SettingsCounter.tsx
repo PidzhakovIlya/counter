@@ -21,7 +21,7 @@ export const SettingsCounter: React.FC<SetCounterPropsType> = ({setMin, setMax, 
         const setCountHandler = ()=> {
             localStorage.setItem('start', String(min))
             localStorage.setItem('end', String(max))
-            setCount(min)
+            setCount(Number(localStorage.getItem("start")))
 
         }
         const restartSettingsHandler = ()=>{
