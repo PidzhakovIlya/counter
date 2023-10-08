@@ -25,12 +25,20 @@ export const Counter: React.FC<CounterTypeProps> = ({min, max, count, setCount})
     }
     return (
         <CounterBox>
-            {max > min && min >= 0 ?
-                <Display counter={count} maxCount={max}/>
-                : <Display counter={"Incorrect Value"} maxCount={max}/>
+            {/*{max > min && min >= 0 ?*/}
+            {/*    <Display counter={count} maxCount={max}/>*/}
+            {/*    : <Display counter={"Incorrect Value"} maxCount={max}/>*/}
+            {/*}*/}
+            {max <= Number(localStorage.getItem("start")) || max<=0 || min >= Number(localStorage.getItem("end")) || min<0  ?
+                <Display counter={"Incorrect Value"} maxCount={max}/>
+                : min !== Number(localStorage.getItem("start")) || max !== Number(localStorage.getItem("end")) ?
+                    <Display counter={"Pres SetStart"} maxCount={max}/>
+                    : <Display counter={count} maxCount={max}/>
             }
+
+
             <FlexWrapper justify={"space-evenly"}>
-                <Button name={"SET"} callBack={counterHandler} disabled={ count >= max || count < min}/>
+                <Button name={"SET"} callBack={counterHandler} disabled={count >= max || count < min}/>
                 <Button name={"RESET"} callBack={resetCounter} disabled={count === min || count < min || count > max}/>
             </FlexWrapper>
         </CounterBox>

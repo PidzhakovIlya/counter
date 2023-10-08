@@ -8,9 +8,13 @@ import {FlexWrapper} from "./components/FlexWrapper";
 export let minCount = 0;
 export let maxCount = 5;
 function App() {
-    const [ min, setMin] = useState(minCount);
-    const [ max, setMax] = useState(maxCount);
-    const [count, setCount] = useState(minCount)
+    let localStart = localStorage.getItem('start')
+    let localEnd = localStorage.getItem('end')
+    console.log(localStart)
+    const [ min, setMin] = useState(Number(localStart));
+    const [ max, setMax] = useState(Number(localEnd));
+    const [count, setCount] = useState(min)
+
 
   return (
     <FlexWrapper direction={"row"} justify={"center"} align={"center"} gap={"20px"}>
